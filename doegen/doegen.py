@@ -206,7 +206,7 @@ def calc_twofactorbalance(setup, Array):
     for factor_name in factors:
         Alist.append(
             pd.get_dummies(dfcat.set_index(factor_name), prefix_sep=" _")
-            .sum(level=0)
+            .groupby(level=0).sum()
             .astype(int)
         )
     # print(Alist)
